@@ -27,10 +27,10 @@ class CallableTest extends PHPUnit_Framework_TestCase
             [],
             function($curl, $data) {
                 $json = json_encode($data);
-                curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
-                curl_setopt($this->curl, CURLOPT_POSTFIELDS, $json);
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
                 // Rewrite headers
-                curl_setopt($this->curl, CURLOPT_HTTPHEADER, ['Content-Length: '.strlen($json)]);
+                curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Length: '.strlen($json)]);
                 return $curl;
             }
         );
