@@ -1,0 +1,6 @@
+# Dependencies
+/vendor
+
+# Generated
+composer.lock
+.DS_Store

@@ -1,0 +1,33 @@
+{
+    "name": "10quality/php-curl",
+    "description": "Library (wrapper) that provides functionality for when doing requests using Curl. Perfect for when developing custom API connectivity or creating generic requests.",
+    "license": "MIT",
+    "homepage": "https://github.com/10quality/php-curl",
+    "keywords": [
+        "curl",
+        "wrapper"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "10 Quality",
+            "email": "info@10quality.com"
+        },
+        {
+            "name": "Cami M",
+            "email": "info@10quality.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/Curl.php",
+            "src/lib/functions.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    }
+}
