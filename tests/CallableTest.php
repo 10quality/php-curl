@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 /**
  * Test callable parameter.
  *
@@ -10,7 +11,7 @@
  * @package [php-curl]
  * @version 1.0.0
  */
-class CallableTest extends PHPUnit_Framework_TestCase
+class CallableTest extends TestCase
 {
     /**
      * Test request.

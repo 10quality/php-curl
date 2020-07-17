@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 /**
  * Test request.
  *
@@ -8,7 +9,7 @@
  * @package [php-curl]
  * @version 1.0.0
  */
-class GetTest extends PHPUnit_Framework_TestCase
+class GetTest extends TestCase
 {
     /**
      * Test request.
@@ -42,18 +43,16 @@ class GetTest extends PHPUnit_Framework_TestCase
     {
         // Prepare and execute
         $response = curl_request(
-            'https://archive.org/services/loans/beta/loan/index.php?action=availability',
+            'https://api.jikan.moe/v3/search/anime',
             'GET',
             [
-                'validate' => 1,
-                'identifiers' => 'adventuresofoli00dick,alchemist00jons_2',
+                'q' => 'One Piece',
             ]
         );
         $json = json_decode($response);
         // Assert
         $this->assertInternalType('string', $response);
         $this->assertTrue(strlen($response)>0);
-        $this->assertTrue($json->success);
-        $this->assertTrue(isset($json->responses->adventuresofoli00dick));
+        $this->assertNotEmpty($json->results);
     }
 }

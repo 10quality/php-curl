@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 /**
  * Test autoload of global functions.
  *
@@ -8,7 +9,7 @@
  * @package [php-curl]
  * @version 1.0.0
  */
-class AutoloadTest extends PHPUnit_Framework_TestCase
+class AutoloadTest extends TestCase
 {
     /**
      * Test function definition.

@@ -6,7 +6,7 @@
  * @author Cami M <info@10quality.com>
  * @copyright 10 Quality <info@10quality.com>
  * @package [php-curl]
- * @version 1.0.0
+ * @version 1.0.1
  */
 class Curl
 {
@@ -76,6 +76,10 @@ class Curl
     {
         $this->headers = $headers;
         $this->options = $options;
+        if (!is_array( $this->headers))
+            $this->headers = [];
+        if (!is_array( $this->options))
+            $this->options = [];
         $error = null;
         if (!is_array($data))
             throw new Exception('Data parameter must be an array.');
@@ -114,10 +118,10 @@ class Curl
                 curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, str_replace('J', '', $method));
                 curl_setopt($this->curl, CURLOPT_POSTFIELDS, $json);
                 // Rewrite headers
-                curl_setopt($this->curl, CURLOPT_HTTPHEADER, array(
+                curl_setopt($this->curl, CURLOPT_HTTPHEADER, array_merge(array(
                     'Content-Type: application/json',
                     'Content-Length: '.strlen($json),
-                ));
+                ), $this->headers));
                 break;
             default:
                 if ($callable)

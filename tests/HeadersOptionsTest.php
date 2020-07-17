@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 /**
  * Test headers and options.
  *
@@ -10,7 +11,7 @@
  * @package [php-curl]
  * @version 1.0.0
  */
-class HeadersOptionsTest extends PHPUnit_Framework_TestCase
+class HeadersOptionsTest extends TestCase
 {
     /**
      * Test request.
@@ -20,7 +21,7 @@ class HeadersOptionsTest extends PHPUnit_Framework_TestCase
     {
         // Prepare and execute
         $response = curl_request(
-            'http://httpbin.org/bearer',
+            'https://httpbin.org/bearer',
             'GET',
             [],
             ['Authorization: test']
@@ -38,7 +39,7 @@ class HeadersOptionsTest extends PHPUnit_Framework_TestCase
     public function testHeadersFailed()
     {
         // Prepare and execute
-        $response = curl_request('http://httpbin.org/bearer');
+        $response = curl_request('https://httpbin.org/bearer');
         // Assert
         $this->assertInternalType('string', $response);
         $this->assertEmpty($response);

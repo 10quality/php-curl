@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 /**
  * Test request.
  *
@@ -10,7 +11,7 @@
  * @package [php-curl]
  * @version 1.0.0
  */
-class PostTest extends PHPUnit_Framework_TestCase
+class PostTest extends TestCase
 {
     /**
      * Test request.
