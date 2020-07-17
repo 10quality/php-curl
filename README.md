@@ -39,7 +39,7 @@ $response = curl_request($url, $method, $data, $headers, $options);
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
 | `$url` | `string` | Request URL. |
-| `$method` | `string` | Request method (`GET` by default). Available options: **GET**, **POST**, **JPOST**, **JPUT**, **JGET**, **JDELETE**. Json request is sent in those with the *J* prefix. |
+| `$method` | `string` | Request method (`GET` by default). Available options: **GET**, **POST**, **JPOST**, **JPUT**, **JGET**, **JDELETE**, **JUPDATE**, **JPATCH**. Json request is sent in those with the *J* prefix. |
 | `$data` | `array` | The request data to send via query string, request body or both (Empty by default). |
 | `$headers` | `array` | The list of request headers to add (Empty by default). |
 | `$options` | `array` | The list of curl options to add (Empty by default). |
