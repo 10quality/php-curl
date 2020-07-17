@@ -114,6 +114,7 @@ class Curl
             case 'JGET':
             case 'JDELETE':
             case 'JUPDATE':
+            case 'JPATCH':
                 $json = json_encode($data);
                 curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, str_replace('J', '', $method));
                 curl_setopt($this->curl, CURLOPT_POSTFIELDS, $json);
