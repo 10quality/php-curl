@@ -20,18 +20,18 @@ class GetTest extends TestCase
         // Prepare and execute
         $response = curl_request('http://httpbin.org/get');
         // Assert
-        $this->assertInternalType('string', $response);
+        $this->assertIsString($response);
         $this->assertTrue(strlen($response)>0);
     }
     /**
      * Test request.
      * @since 1.0.0
-     *
-     * @expectedException        Exception
-     * @expectedExceptionMessage Could not resolve host: unknow.page.for.test
      */
     public function testGet404()
     {
+        // Assert
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Could not resolve host: unknow.page.for.test');
         // Prepare and execute
         $response = curl_request('http://unknow.page.for.test/');
     }
@@ -43,7 +43,7 @@ class GetTest extends TestCase
     {
         // Prepare and execute
         $response = curl_request(
-            'https://api.jikan.moe/v3/search/anime',
+            'https://api.jikan.moe/v4/anime',
             'GET',
             [
                 'q' => 'One Piece',
@@ -51,8 +51,8 @@ class GetTest extends TestCase
         );
         $json = json_decode($response);
         // Assert
-        $this->assertInternalType('string', $response);
+        $this->assertIsString($response);
         $this->assertTrue(strlen($response)>0);
-        $this->assertNotEmpty($json->results);
+        $this->assertNotEmpty($json->data);
     }
 }

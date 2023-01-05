@@ -16,51 +16,49 @@ class PostTest extends TestCase
     /**
      * Test request.
      * @since 1.0.0
+     * @group post
      */
     public function testPost()
     {
         // Prepare and execute
         $response = curl_request(
-            'http://archive.org/services/loans/beta/loan/index.php',
+            'https://httpbin.org/anything',
             'POST',
             [
-                'action' => 'availability',
-                'validate' => 1,
-                'identifiers' => 'adventuresofoli00dick,alchemist00jons_2',
+                'test' => '123',
             ]
         );
         $json = json_decode($response);
         // Assert
-        $this->assertInternalType('string', $response);
+        $this->assertIsString($response);
         $this->assertTrue(strlen($response)>0);
-        $this->assertTrue($json->success);
-        $this->assertTrue(isset($json->responses->adventuresofoli00dick));
+        $this->assertEquals(123, $json->form->test);
     }
     /**
      * Test request.
      * @since 1.0.0
+     * @group post
      */
     public function testGetPost()
     {
         // Prepare and execute
         $response = curl_request(
-            'http://archive.org/services/loans/beta/loan/index.php',
+            'https://httpbin.org/anything',
             'POST',
             [
                 'query_string' => [
-                    'identifiers' => 'adventuresofoli00dick,alchemist00jons_2',
+                    'q' => 'abc',
                 ],
                 'request_body' => [
-                    'action' => 'availability',
-                    'validate' => 1,
+                    'test' => '123',
                 ],
             ]
         );
         $json = json_decode($response);
         // Assert
-        $this->assertInternalType('string', $response);
+        $this->assertIsString($response);
         $this->assertTrue(strlen($response)>0);
-        $this->assertTrue($json->success);
-        $this->assertTrue(isset($json->responses->adventuresofoli00dick));
+        $this->assertEquals('abc', $json->args->q);
+        $this->assertEquals(123, $json->form->test);
     }
 }

@@ -37,6 +37,6 @@ class CallableTest extends TestCase
         );
         $json = json_decode($response);
         // Assert
-        $this->assertInternalType('string', $response);
+        $this->assertIsString($response);
     }
 }

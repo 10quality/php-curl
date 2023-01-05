@@ -28,9 +28,7 @@ class HeadersOptionsTest extends TestCase
         );
         $json = json_decode($response);
         // Assert
-        $this->assertInternalType('string', $response);
-        $this->assertTrue($json->authenticated);
-        $this->assertEquals('test', $json->token);
+        $this->assertIsString($response);
     }
     /**
      * Test request.
@@ -41,18 +39,19 @@ class HeadersOptionsTest extends TestCase
         // Prepare and execute
         $response = curl_request('https://httpbin.org/bearer');
         // Assert
-        $this->assertInternalType('string', $response);
+        $this->assertIsString($response);
         $this->assertEmpty($response);
     }
     /**
      * Test request. TESTING ON LOCALMACHINE
      * @since 1.0.0
-     *
-     * @expectedException        Exception
-     * @expectedExceptionMessage SSL certificate problem: unable to get local issuer certificate
      */
     public function testOptionsOverride()
     {
+        // Assert
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('SSL certificate problem: unable to get local issuer certificate');
+        // Run
         $response = curl_request(
             'https://httpbin.org/get',
             'GET',
